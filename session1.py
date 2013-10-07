@@ -18,7 +18,7 @@ d *= a # Means: d = d * a; Same: -=, += and /=
 
 e = 48
 f = e % 7 # Modulo: Remainder when divided by 7
-print 'EX3:', d, f
+# print 'EX3:', d, f
 
 
 ##
@@ -129,5 +129,33 @@ if not l:
 			pass
 			# print 'EX15: Works...'
 
+# EX 16
+for i in xrange(1000000000):
+	if i >= 9999:
+		break
+# print 'EX16:', i
 
 
+##
+# PROBLEM 1_A:
+##
+
+# https://projecteuler.net/problem=1
+
+# If we list all the natural numbers below 10 that are multiples of 3 or 5, 
+# we get 3, 5, 6 and 9. The sum of these multiples is 23.
+ 
+# Find the sum of all the multiples of 3 or 5 below 1000.
+
+
+##
+# PROBLEM 1_B:
+##
+
+# https://projecteuler.net/problem=5 (variation)
+
+# 2520 is the smallest number that can be divided by each of the numbers 
+# from 1 to 10 without any remainder.
+
+# What is the smallest positive number that is evenly divisible 
+# by all of the numbers from 1 to 16?
