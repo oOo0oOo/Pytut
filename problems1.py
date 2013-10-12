@@ -21,7 +21,7 @@ print 'Sum of multiples:', s
 # What is the smallest positive number that is evenly divisible 
 # by all of the numbers from 1 to 16?
 
-for i in range(1,1000000):
+for i in xrange(1,1000000):
 	found = 0
 	for j in range(1, 17):
 		if i%j == 0:
