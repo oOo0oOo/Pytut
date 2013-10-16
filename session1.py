@@ -1,6 +1,6 @@
-##
+####
 # Basics, Operators
-##
+####
 
 # Exercise 1: Variables
 a = 15
@@ -28,9 +28,9 @@ f = e % 7 # Modulo: Remainder when divided by 7
 
 
 
-##
+####
 # Datatypes: Integer, Float
-##
+####
 
 # Exercise 6: Numbers default to floats if needed
 a = 4
@@ -39,9 +39,9 @@ b = 13.0
 
 
 
-##
+####
 # Boolean
-##
+####
 
 # Exercise 7: Getting to know booleans
 a = 4
@@ -53,9 +53,9 @@ e = ( c != d )
 
 
 
-##
+####
 # String
-##
+####
 
 # Exercise 8: Basic strings and string addition
 a = 'i am a string'
@@ -89,9 +89,9 @@ inserted = 'LabView Sucks!'
 
 
 
-##
+####
 # List
-##
+####
 
 # Exercise 13: Lists and list addition
 l1 = [1, 2, 3]
@@ -112,9 +112,9 @@ item_at_ind_3 = l3.pop(3)
 
 
 
-##
+####
 # For loops
-##
+####
 
 # Exercise 16: Looping over a list
 a = [0, 1, 2]
@@ -131,9 +131,9 @@ for i in range(10):
 
 
 
-##
+####
 # if statement
-##
+####
 
 # Exercise 18: A simple if statement
 l = [0, 1, 2, 3, 4]
@@ -165,9 +165,9 @@ for i in xrange(1000000000):
 
 
 
-##
+####
 # PROBLEM 1_A (easier):
-##
+####
 
 # https://projecteuler.net/problem=1
 
@@ -177,9 +177,9 @@ for i in xrange(1000000000):
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
 
-##
+####
 # PROBLEM 1_B:
-##
+####
 
 # https://projecteuler.net/problem=5 (variation)
 
