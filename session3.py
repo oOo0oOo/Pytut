@@ -1,27 +1,24 @@
 #-------------------------------------------------
 #
-# Python Tutorial Session 2
+# Python Tutorial Session 3
 # (c) Oliver Dressler, 2013
 #
 #-------------------------------------------------
 
 
 ####
-# Exceptions
+# While loops
 ####
 
 ####
-# Dictionaries
+# Modules & the import statement
 ####
 
 ####
-# Unpacking values
-####
-
-#### 
-# Prompting users
+# Object-oriented programming
 ####
 
 ####
-# Functions
+# Everything is an object
 ####
+

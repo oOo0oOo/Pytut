@@ -1,27 +1,23 @@
 #-------------------------------------------------
 #
-# Python Tutorial Session 2
+# Python Tutorial Session 3
 # (c) Oliver Dressler, 2013
 #
 #-------------------------------------------------
 
 
 ####
-# Exceptions
+# Important functions
 ####
 
 ####
-# Dictionaries
+# Testing your code (unittest)
 ####
 
 ####
-# Unpacking values
-####
-
-#### 
-# Prompting users
+# Inheritance
 ####
 
 ####
-# Functions
+# (CSV) file handling
 ####
