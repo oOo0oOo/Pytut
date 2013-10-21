@@ -1,16 +1,19 @@
 #-------------------------------------------------
 #
-# Python Tutorial Session 3
+# Python Tutorial Session 5
 # (c) Oliver Dressler, 2013
 #
 #-------------------------------------------------
 
 
+####
+# Important functions from the standard library
+####
 
 ####
-# Object-oriented programming
+# Testing your code (unittest)
 ####
 
 ####
-# Everything is an object
+# Inheritance
 ####

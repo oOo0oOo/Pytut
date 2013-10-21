@@ -14,7 +14,7 @@
 
 
 ####
-# Arithmetic
+# Arithmetics
 ####
 
 ## Example 1: Variables

@@ -7,18 +7,21 @@
 
 
 ####
+# Unpacking values
+####
+
+####
 # While loops
+####
+
+####
+# Prompting the user
+####
+
+####
+# Functions II
 ####
 
 ####
 # Modules & the import statement
 ####
-
-####
-# Object-oriented programming
-####
-
-####
-# Everything is an object
-####
-
