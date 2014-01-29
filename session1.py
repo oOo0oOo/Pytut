@@ -9,8 +9,9 @@
 # Python vs. MATLAB
 ####
 
-# + Learning Curve, Readability, Flexibility, Development Speed
-# - Performance, Matlab Standard Library, (Scientific) Community
+# + Learning Curve, Readability, Flexibility, Development Speed, Free (Open Source)
+# - Matlab Standard Library, Scientific Community, (Performance)
+
 
 
 ####
@@ -31,6 +32,7 @@ c = (c + a) * b - (b / a)
 
 ## Example 3: Multiple assignments
 x = y = z = 0
+a, b = 0, 1
 # print x, y, z
 # Try: print first z then x on one line
 
@@ -97,17 +99,18 @@ c = a + b
 
 
 ## Example 10: Escaping characters
-# print 'i\'m a string', '\nme too\n\t!!!!!!!!'
+# print 'i\'m a string', '\nme too\n\t!!'
 
 
 ## Example 11: Multiline strings
 multiline_string = '''I am on the first line.
 I\'m on the second line.
-	I was last...'''
+I was last...'''
 # print multiline_string
 
 
 ## Example 12: String slices (parts)
+# INDEXING IN PYTHON ALWAYS START WITH 0!!
 a = '12345'
 b = a[0]
 c = a[1:5]
@@ -124,7 +127,6 @@ a = 'The inserted string is: {}. It\'s length is: {}.'
 inserted = 'LabView Sucks!'
 final = a.format(inserted, len(inserted))
 # print final
-
 
 
 ####
@@ -239,7 +241,7 @@ for i in range(num_sub_lists):
 for i in range(len(original)):
 	# Get the element at this index
 	element = original[i]
-	# Find the sub list it should be moved to (remainder of index/num_sub_lists) 
+	# Find the sub list it should be moved to (remainder of the division index/num_sub_lists) 
 	sub_list = i % num_sub_lists
 	# Append the item to this specific list
 	final[sub_list].append(element)
