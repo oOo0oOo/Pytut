@@ -100,6 +100,11 @@ a = [i*2 for i in range(10)]
 a = [i**2 for i in range(10) if i%2]
 # print a
 
+## The in statement
+b = 10
+if b in a:
+	print 'Found', b
+
 ## Pretty printing (should be in string chapter)
 ## WORKS WITH LISTS CONTAINING ONLY STRINGS!!
 students = ['Che', 'Fidel', 'Raul']
@@ -151,6 +156,7 @@ try:
 	tester([1, 2, 3, 11])
 except NameError:
 	pass
+
 
 ####
 # Dictionaries (Key-Value Storage Container)
