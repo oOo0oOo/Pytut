@@ -19,11 +19,12 @@ def addition(arg1, arg2):
 # print result
 
 
-## Functions can return multiple values
+## Functions can return multiple values & value types
 def test_value(value):
-	return value < 10, value < 20
+	return value < 10, [value]
 
-# print test_value(15) 
+a, b = test_value(15)
+# print a, b
 
 
 ## Function can have (multiple) default arguments
@@ -36,9 +37,59 @@ def limit(value, threshold = 5, smaller_val = 0):
 # print limit(4), limit(10, 10), limit(10, 15, 1), limit(5, smaller_val = 3)
 
 
+## Functions can be stored in collections (e.g. lists)
+def same(val):
+	return val
+
+def double(val):
+	return 2.0 * val
+
+def squared(val):
+	return val ** 2
+
+funcs = [same, double, squared]
+
+#print funcs[0](5), funcs[1](6), funcs[2](7)
+
+for f in funcs:
+	a = f(5)
+	# print a
+
+
+## Functions do not have to return a value
+## In that case the default return value is None
+
+def better_print(val):
+	print val, type(val)
+
+# a = better_print(10)
+# print a
+
+
+####
+# Some useful functions from the standard library
+####
+
+## Type Conversions (immutable types)
+a = 10.5
+#  print type(a)
+# print int(a), float(a), str(a), bool(a), complex(a)
+# print round(a)
+
+## Functions for iterables
+a = 'bAABcda'
+# print len(a), max(a), min(a)
+# print sorted(a)
+# print sum(a)
+
+
 ####
 # Lists II
 ####
+
+## Extended indexing and concatenation
+a = range(10)
+# print a[-1], a[5:-2]
 
 ## List comprehension = For loop that creates a list
 a = [i*2 for i in range(10)]
@@ -48,6 +99,13 @@ a = [i*2 for i in range(10)]
 ## List comprehensions work with if
 a = [i**2 for i in range(10) if i%2]
 # print a
+
+## Pretty printing (should be in string chapter)
+## WORKS WITH LISTS CONTAINING ONLY STRINGS!!
+students = ['Che', 'Fidel', 'Raul']
+attendance = ', '.join(students)
+# print 'Students attending Revolution 101:', attendance
+# print '\n'.join(students)
 
 
 ####
@@ -77,7 +135,7 @@ except IndexError:
 def tester(val):
 	return val2
 
-tester(5)
+# tester(5)
 
 # Produces this error message:
 
@@ -88,6 +146,11 @@ tester(5)
 #    return val2
 #NameError: global name 'val2' is not defined
 
+# This catches the error
+try:
+	tester([1, 2, 3, 11])
+except NameError:
+	pass
 
 ####
 # Dictionaries (Key-Value Storage Container)
@@ -107,4 +170,6 @@ a['dict'] = {'another': 12}
 # Example
 all_keys = a.keys()
 all_values = a.values()
+both = a.items()
 # print all_keys, '\n', all_values
+# print both
