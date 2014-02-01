@@ -7,6 +7,18 @@
 
 
 ####
+# Datatype: Tuple (immutable list)
+####
+
+## A tuple is much like a list
+t = (1, 2, 'number 3')
+# print t, len(t), t[:2]
+
+## But immutable (can not be changed after creation)
+# t[1] = 'number 2'
+
+
+####
 # Functions
 ####
 
@@ -15,7 +27,11 @@ def addition(arg1, arg2):
 	result = arg1 + arg2
 	return result
 
-# print addition(3, 4)
+a = addition(3, 4)
+# print a
+
+## Functions have their own namespace
+## (Variables defined within a function are unavailable once the function has returned)
 # print result
 
 
@@ -26,6 +42,9 @@ def test_value(value):
 a, b = test_value(15)
 # print a, b
 
+## Or multiple values in a tuple
+results = test_value(15)
+# print results, results[1] == b
 
 ## Function can have (multiple) default arguments
 def limit(value, threshold = 5, smaller_val = 0):
@@ -78,9 +97,14 @@ a = 10.5
 
 ## Functions for iterables
 a = 'bAABcda'
+
+# Conversions
+# print list(a), tuple(a)
+
+# Some usefull operations
 # print len(a), max(a), min(a)
 # print sorted(a)
-# print sum(a)
+# print sum(a) # Only works for lists of "numbers"
 
 
 ####
