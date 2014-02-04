@@ -23,7 +23,7 @@ topics = [
 ]
 
 title = 'Do you want to know about:\n\n-'
-print title + '\n\n-'.join(topics)
+# print title + '\n\n-'.join(topics)
 
 ####
 # Datatype: Tuple (immutable list)
