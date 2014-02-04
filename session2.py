@@ -5,6 +5,25 @@
 #
 #-------------------------------------------------
 
+####
+# Poll
+####
+
+topics = [
+'Interfacing with external devices (USB/Serial)', 							#
+'Plotting data',															#
+'Advanced statistics (tests & stuff)',										#
+'Matrix computating (similar to MATLAB)',									#
+'Image Processing',															#
+'Making a graphical user interface',										#
+'Single phase flow simulation (only on simulation pc)',						#
+'Databases and large scale data handling',									#
+'Symbolic computation (Mathematica / Wolfram alpha)',						#
+'Advanced data handling: fft, interpolation, integration, clustering, ...'	#
+]
+
+title = 'Do you want to know about:'
+# print title + '\n\n-' + '\n\n-'.join(topics)
 
 ####
 # Datatype: Tuple (immutable list)
