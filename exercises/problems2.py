@@ -16,7 +16,7 @@
 # PROBLEM 2_B
 ####
 
-# Count the number of times each word comes up in the text.
+# Count the number of times each word comes up in this text (use dictionary, ignore upper case).
 # Make a list with all the words that come up more than 6 times...
 
 text = '''
@@ -28,11 +28,11 @@ Morbi mi odio, accumsan nec turpis quis, malesuada placerat eros. Cras a accumsa
 '''
 
 ####
-# PROBLEM 2_C (kind of complex)
+# PROBLEM 2_C (need a challenge?)
 ####
 
 # Write a program that outputs 15 rows of pascals triangle.
-# E.g. 3 Rows should be:
+# E.g. 3 Rows would be:
 
 1
 11
