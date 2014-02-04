@@ -22,8 +22,8 @@ topics = [
 'Advanced data handling: fft, interpolation, integration, clustering, ...'	#
 ]
 
-title = 'Do you want to know about:'
-# print title + '\n\n-' + '\n\n-'.join(topics)
+title = 'Do you want to know about:\n\n-'
+print title + '\n\n-'.join(topics)
 
 ####
 # Datatype: Tuple (immutable list)
