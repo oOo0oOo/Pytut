@@ -66,6 +66,20 @@ def better_print(val):
 # print a
 
 
+## Functions can return other functions
+## (Because Python is awesome...)
+
+def make_scale(scaling_factor):
+
+	def scale_func(value):
+		return value * scaling_factor
+
+	return scale_func
+
+scaler = make_scale(1.1)
+# print scaler(2.55), make_scale(1.1)(2.55)
+
+
 ####
 # Some useful functions from the standard library
 ####
@@ -80,7 +94,26 @@ a = 10.5
 a = 'bAABcda'
 # print len(a), max(a), min(a)
 # print sorted(a)
-# print sum(a)
+# print sum(a) # WORKS ONLY WITH LISTS OF NUMBERS
+
+
+## String specific
+a = 'aSDf, Fdsa, Asdf, fdsa'
+
+# print a.split(', ')
+# print a.find('fdsa') # Returns index of first occurence (or -1)
+# print a.upper()
+# print a.lower()
+# print a.title()
+# print a.replace(', ', ' ... ')
+
+
+## Pretty printing (should be in string chapter)
+## WORKS WITH LISTS CONTAINING ONLY STRINGS!!
+students = ['Che', 'Fidel', 'Raul']
+attendance = ', '.join(students)
+# print 'Students attending Revolution 101:', attendance
+# print '\n'.join(students)
 
 
 ####
@@ -104,13 +137,6 @@ a = [i**2 for i in range(10) if i%2]
 b = 10
 if b in a:
 	print 'Found', b
-
-## Pretty printing (should be in string chapter)
-## WORKS WITH LISTS CONTAINING ONLY STRINGS!!
-students = ['Che', 'Fidel', 'Raul']
-attendance = ', '.join(students)
-# print 'Students attending Revolution 101:', attendance
-# print '\n'.join(students)
 
 
 ####
@@ -154,19 +180,13 @@ def tester(val):
 # This catches the error
 try:
 	tester([1, 2, 3, 11])
-except NameError:
+except NameError, e:
 	pass
+	# print e
 
 
 ####
-# Dictionaries (Key-Value Storage Container)
-####
-
-# Example
-a = {'blue': 12, 'green': 15.0, 'red': 1}
-# print a['blue'], a['green'] + a['red']
-
-# Example
+# Dictionaries (Key-Value Storage Container) 
 a = {}
 a[12] = 'blabla'
 a['12'] = [1,2]
@@ -179,3 +199,10 @@ all_values = a.values()
 both = a.items()
 # print all_keys, '\n', all_values
 # print both
+
+
+
+####
+# Summary
+####
+
