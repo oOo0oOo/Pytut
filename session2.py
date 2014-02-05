@@ -5,6 +5,40 @@
 #
 #-------------------------------------------------
 
+####
+# Poll
+####
+
+topics = [
+'Interfacing with external devices (USB/Serial)', 							#
+'Plotting data',															#
+'Advanced statistics (tests & stuff)',										#
+'Matrix computating (similar to MATLAB)',									#
+'Image Processing',															#
+'Making a graphical user interface',										#
+'Single phase flow simulation (only on simulation pc)',						#
+'Databases and large scale data handling',									#
+'Symbolic computation (Mathematica / Wolfram alpha)',						#
+'Advanced data handling: fft, interpolation, integration, clustering, ...'	#
+]
+
+title = 'Do you want to know about:\n\n-'
+# print title + '\n\n-'.join(topics)
+
+####
+# Datatype: Tuple (immutable list)
+####
+
+## A tuple is much like a list
+t = (1, 2, 'number 3')
+# print t, len(t), t[:2]
+
+
+## But immutable (can not be changed after creation)
+# t[1] = 'number 2'
+# t.append(10)
+
+
 
 ####
 # Functions
@@ -15,7 +49,12 @@ def addition(arg1, arg2):
 	result = arg1 + arg2
 	return result
 
-# print addition(3, 4)
+a = addition(3, 4)
+# print a
+
+
+## Functions have their own namespace
+## (Variables defined within a function are unavailable once the function has returned)
 # print result
 
 
@@ -25,6 +64,11 @@ def test_value(value):
 
 a, b = test_value(15)
 # print a, b
+
+
+## Or multiple values in a tuple
+results = test_value(15)
+# print results, results[1] == b
 
 
 ## Function can have (multiple) default arguments
@@ -66,21 +110,60 @@ def better_print(val):
 # print a
 
 
+## Functions can return other functions
+## (Because Python is awesome...)
+
+def make_scale(scaling_factor):
+
+	def scale_func(value):
+		return value * scaling_factor
+
+	return scale_func
+
+scaler = make_scale(1.1)
+# print scaler(2.55), make_scale(1.1)(2.55)
+
+
 ####
 # Some useful functions from the standard library
 ####
 
 ## Type Conversions (immutable types)
 a = 10.5
-#  print type(a)
+# print type(a)
 # print int(a), float(a), str(a), bool(a), complex(a)
 # print round(a)
 
+
 ## Functions for iterables
 a = 'bAABcda'
+
+# Conversions
+# print list(a), tuple(a)
+
+# Some usefull operations
 # print len(a), max(a), min(a)
 # print sorted(a)
-# print sum(a)
+# print sum(a) # Only works for lists of "numbers"
+
+
+## String specific
+a = 'aSDf, Fdsa, Asdf, fdsa'
+
+# print a.split(', ')
+# print a.find('fdsa') # Returns index of first occurence (or -1)
+# print a.upper()
+# print a.lower()
+# print a.title()
+# print a.replace(', ', ' ... ')
+
+
+## Pretty printing (should be in string chapter)
+## WORKS WITH LISTS CONTAINING ONLY STRINGS!!
+students = ['Che', 'Fidel', 'Raul']
+attendance = ', '.join(students)
+# print 'Students attending Revolution 101:', attendance
+# print '\n'.join(students)
 
 
 ####
@@ -91,6 +174,7 @@ a = 'bAABcda'
 a = range(10)
 # print a[-1], a[5:-2]
 
+
 ## List comprehension = For loop that creates a list
 a = [i*2 for i in range(10)]
 # print a
@@ -100,17 +184,11 @@ a = [i*2 for i in range(10)]
 a = [i**2 for i in range(10) if i%2]
 # print a
 
+
 ## The in statement
 b = 10
 if b in a:
 	print 'Found', b
-
-## Pretty printing (should be in string chapter)
-## WORKS WITH LISTS CONTAINING ONLY STRINGS!!
-students = ['Che', 'Fidel', 'Raul']
-attendance = ', '.join(students)
-# print 'Students attending Revolution 101:', attendance
-# print '\n'.join(students)
 
 
 ####
@@ -127,7 +205,8 @@ a = range(5)
 #    b = a[5]
 #IndexError: list index out of range
 
-# Lets catch it:
+
+## Lets catch it:
 try:
 	b = a[5]
 except IndexError:
@@ -151,22 +230,20 @@ def tester(val):
 #    return val2
 #NameError: global name 'val2' is not defined
 
-# This catches the error
+
+## This catches the error
 try:
 	tester([1, 2, 3, 11])
-except NameError:
+except NameError, e:
 	pass
+	# print e
+
 
 
 ####
-# Dictionaries (Key-Value Storage Container)
+# Dictionaries (Key-Value Storage Container) 
 ####
 
-# Example
-a = {'blue': 12, 'green': 15.0, 'red': 1}
-# print a['blue'], a['green'] + a['red']
-
-# Example
 a = {}
 a[12] = 'blabla'
 a['12'] = [1,2]
@@ -179,3 +256,52 @@ all_values = a.values()
 both = a.items()
 # print all_keys, '\n', all_values
 # print both
+
+## Use dict.get(key) if you are not sure that the key exists
+# print a.get(12), a.get(13)
+val = a.get(13)
+if val:
+	print val
+
+
+
+####
+# Quick summary
+####
+
+## Some text (straight from wikipedia)
+tragedies = '''
+Romeo and Juliet
+Coriolanus
+Titus Andronicus
+Timon of Athens
+Julius Caesar
+Macbeth
+Hamlet
+Troilus and Cressida
+King Lear
+Othello
+Antony and Cleopatra
+Cymbeline
+'''
+
+## Post processing: create a list with titles
+## (each line of the multiline string a list element)
+trag_list = tragedies.split('\n')
+# print trag_list
+
+
+## Post processing: Remove empty elements
+trag_list = [t.lower() for t in trag_list if t]
+# print trag_list
+
+## Count letter frequency
+freq = {}
+for t in trag_list:
+	for let in t:
+		if let not in freq.keys():
+			freq[let] = 1
+		else:
+			freq[let] += 1
+
+# print freq
