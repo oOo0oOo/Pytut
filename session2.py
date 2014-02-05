@@ -12,6 +12,7 @@
 topics = [
 'Interfacing with external devices (USB/Serial)', 							#
 'Plotting data',															#
+'Why not both - parallel code execution in Python',							#
 'Advanced statistics (tests & stuff)',										#
 'Matrix computating (similar to MATLAB)',									#
 'Image Processing',															#
