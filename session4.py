@@ -108,13 +108,35 @@ import math
 # print math.pi, math.e
 
 ## Trigonometry
-#math.radians(), math.degrees()
-#math.sin(), math.asin()
-#math.cos(), math.acos()
+angle = math.pi * 0.25
+# print math.degrees(angle), math.radians(90)
+# print math.sin(angle), math.asin(angle)
+# print math.cos(angle), math.acos(angle)
 
-#math.ceil()
-#math.floor()
+## Other usefull stuff
+# print math.ceil(1.0001), math.floor(9.9999)
+# print math.sqrt(65536)
+# print math.log(10), math.e ** math.log(10)
+# print math.factorial(5)
 
-#math.sqrt()
-#math.log()
-#math.factorial()
+
+
+####
+# Special import statements
+####
+
+## Using code from another file
+import session2
+# print session2.addition(2, 3)
+
+## Specific imports
+from session2 import addition
+# print addition(5, 6)
+
+## Wildcard imports (do not use in final versions of program)
+from math import *
+# print floor(e)
+
+## Changing names when importing
+from session2 import addition as add
+# print add(17, -11)
