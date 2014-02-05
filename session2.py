@@ -7,25 +7,20 @@
 #-------------------------------------------------
 
 ####
-# Poll
+# Poll (ordered)
 ####
-
-topics = [
-'Interfacing with external devices (USB/Serial)', 							# 8
-'Plotting data',															# 7
-'Why not both - parallel code execution in Python',							# 7
-'Advanced statistics (tests & stuff)',										# 2
-'Matrix computating (similar to MATLAB)',									# 3
-'Image Processing',															# everyone
-'Making a graphical user interface',										# 3
-'Single phase flow simulation (only on simulation pc)',						# 0
-'Databases and large scale data handling',									# 1
-'Symbolic computation (Mathematica / Wolfram alpha)',						# 0
-'Advanced data handling: fft, interpolation, integration, clustering, ...'	# 5
-]
-
-title = 'Do you want to know about:\n\n-'
-# print title + '\n-'.join(topics)
+																			# Interested:
+# Image Processing																everyone
+# Interfacing with external devices (USB/Serial) 								8
+# Plotting data																	7
+# Why not both - parallel code execution in Python								7
+# Advanced data handling: fft, interpolation, integration, clustering, ...		5
+# Matrix computating (similar to MATLAB)										3
+# Making a graphical user interface												3
+# Advanced statistics (tests & stuff)'											2
+# Databases and large scale data handling										1
+# Single phase flow simulation (only on simulation pc)							0
+# Symbolic computation (Mathematica / Wolfram alpha)							0
 
 ####
 # Datatype: Tuple (immutable list)
