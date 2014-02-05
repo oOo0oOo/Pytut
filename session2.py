@@ -2,6 +2,7 @@
 #
 # Python Tutorial Session 2
 # (c) Oliver Dressler, 2013
+# See: github.com/oOo0oOo/Pytut
 #
 #-------------------------------------------------
 
@@ -10,21 +11,21 @@
 ####
 
 topics = [
-'Interfacing with external devices (USB/Serial)', 							#
-'Plotting data',															#
-'Why not both - parallel code execution in Python',							#
-'Advanced statistics (tests & stuff)',										#
-'Matrix computating (similar to MATLAB)',									#
-'Image Processing',															#
-'Making a graphical user interface',										#
-'Single phase flow simulation (only on simulation pc)',						#
-'Databases and large scale data handling',									#
-'Symbolic computation (Mathematica / Wolfram alpha)',						#
-'Advanced data handling: fft, interpolation, integration, clustering, ...'	#
+'Interfacing with external devices (USB/Serial)', 							# 8
+'Plotting data',															# 7
+'Why not both - parallel code execution in Python',							# 7
+'Advanced statistics (tests & stuff)',										# 2
+'Matrix computating (similar to MATLAB)',									# 3
+'Image Processing',															# everyone
+'Making a graphical user interface',										# 3
+'Single phase flow simulation (only on simulation pc)',						# 0
+'Databases and large scale data handling',									# 1
+'Symbolic computation (Mathematica / Wolfram alpha)',						# 0
+'Advanced data handling: fft, interpolation, integration, clustering, ...'	# 5
 ]
 
 title = 'Do you want to know about:\n\n-'
-# print title + '\n\n-'.join(topics)
+# print title + '\n-'.join(topics)
 
 ####
 # Datatype: Tuple (immutable list)
@@ -66,7 +67,6 @@ def test_value(value):
 a, b = test_value(15)
 # print a, b
 
-
 ## Or multiple values in a tuple
 results = test_value(15)
 # print results, results[1] == b
@@ -94,7 +94,7 @@ def squared(val):
 
 funcs = [same, double, squared]
 
-#print funcs[0](5), funcs[1](6), funcs[2](7)
+# print funcs[0](5), funcs[1](6), funcs[2](7)
 
 for f in funcs:
 	a = f(5)
@@ -130,7 +130,7 @@ scaler = make_scale(1.1)
 ####
 
 ## Type Conversions (immutable types)
-a = 10.5
+a = 10.5324365678567896
 # print type(a)
 # print int(a), float(a), str(a), bool(a), complex(a)
 # print round(a)
@@ -138,6 +138,7 @@ a = 10.5
 
 ## Functions for iterables
 a = 'bAABcda'
+a = [1, 35, 3, 67,22 ,5 ,8, 3, 2]
 
 # Conversions
 # print list(a), tuple(a)
@@ -177,12 +178,12 @@ a = range(10)
 
 
 ## List comprehension = For loop that creates a list
-a = [i*2 for i in range(10)]
+a = [i*2.0 for i in range(10)]
 # print a
 
 
 ## List comprehensions work with if
-a = [i**2 for i in range(10) if i%2]
+a = [i**2 for i in range(10) if i%2 != 0]
 # print a
 
 
@@ -190,119 +191,3 @@ a = [i**2 for i in range(10) if i%2]
 b = 10
 if b in a:
 	print 'Found', b
-
-
-####
-# Exceptions (Pythons Errors)
-####
-
-a = range(5)
-# b = a[5]
-
-# Produces this error (exception):
-
-#Traceback (most recent call last):
-#  File "C:\Code\Pytut\session2.py", line 58, in <module>
-#    b = a[5]
-#IndexError: list index out of range
-
-
-## Lets catch it:
-try:
-	b = a[5]
-except IndexError:
-	b = 0
-
-# print b
-
-
-## Another example
-def tester(val):
-	return val2
-
-# tester(5)
-
-# Produces this error message:
-
-#Traceback (most recent call last):
-#  File "C:\Code\Pytut\session2.py", line 80, in <module>
-#    tester(5)
-#  File "C:\Code\Pytut\session2.py", line 78, in tester
-#    return val2
-#NameError: global name 'val2' is not defined
-
-
-## This catches the error
-try:
-	tester([1, 2, 3, 11])
-except NameError, e:
-	pass
-	# print e
-
-
-
-####
-# Dictionaries (Key-Value Storage Container) 
-####
-
-a = {}
-a[12] = 'blabla'
-a['12'] = [1,2]
-a['dict'] = {'another': 12}
-# print a
-
-# Example
-all_keys = a.keys()
-all_values = a.values()
-both = a.items()
-# print all_keys, '\n', all_values
-# print both
-
-## Use dict.get(key) if you are not sure that the key exists
-# print a.get(12), a.get(13)
-val = a.get(13)
-if val:
-	print val
-
-
-
-####
-# Quick summary
-####
-
-## Some text (straight from wikipedia)
-tragedies = '''
-Romeo and Juliet
-Coriolanus
-Titus Andronicus
-Timon of Athens
-Julius Caesar
-Macbeth
-Hamlet
-Troilus and Cressida
-King Lear
-Othello
-Antony and Cleopatra
-Cymbeline
-'''
-
-## Post processing: create a list with titles
-## (each line of the multiline string a list element)
-trag_list = tragedies.split('\n')
-# print trag_list
-
-
-## Post processing: Remove empty elements
-trag_list = [t.lower() for t in trag_list if t]
-# print trag_list
-
-## Count letter frequency
-freq = {}
-for t in trag_list:
-	for let in t:
-		if let not in freq.keys():
-			freq[let] = 1
-		else:
-			freq[let] += 1
-
-# print freq

@@ -7,6 +7,124 @@
 
 
 ####
+# Exceptions (Pythons Errors)
+####
+
+a = range(5)
+# b = a[5]
+
+# Produces this error (exception):
+
+#Traceback (most recent call last):
+#  File "C:\Code\Pytut\session2.py", line 58, in <module>
+#    b = a[5]
+#IndexError: list index out of range
+
+
+## Lets catch it:
+try:
+	b = a[5]
+except IndexError:
+	b = 0
+
+# print b
+
+
+## Another example
+def tester(val):
+	return val2
+
+# tester(5)
+
+# Produces this error message:
+
+#Traceback (most recent call last):
+#  File "C:\Code\Pytut\session2.py", line 80, in <module>
+#    tester(5)
+#  File "C:\Code\Pytut\session2.py", line 78, in tester
+#    return val2
+#NameError: global name 'val2' is not defined
+
+
+## This catches the error
+try:
+	tester([1, 2, 3, 11])
+except NameError, e:
+	pass
+	# print e
+
+
+
+####
+# Dictionaries (Key-Value Storage Container) 
+####
+
+a = {}
+a[12] = 'blabla'
+a['12'] = [1,2]
+a['dict'] = {'another': 12}
+# print a
+
+# Example
+all_keys = a.keys()
+all_values = a.values()
+both = a.items()
+# print all_keys, '\n', all_values
+# print both
+
+## Use dict.get(key) if you are not sure that the key exists
+# print a.get(12), a.get(13)
+val = a.get(13)
+if val:
+	print val
+
+
+
+####
+# A dictionary example use case
+####
+
+## Some text (straight from wikipedia)
+tragedies = '''
+Romeo and Juliet
+Coriolanus
+Titus Andronicus
+Timon of Athens
+Julius Caesar
+Macbeth
+Hamlet
+Troilus and Cressida
+King Lear
+Othello
+Antony and Cleopatra
+Cymbeline
+'''
+
+## Post processing: create a list with titles
+## (each line of the multiline string a list element)
+trag_list = tragedies.split('\n')
+# print trag_list
+
+
+## Post processing: Remove empty elements
+trag_list = [t.lower() for t in trag_list if t]
+# print trag_list
+
+
+## Count letter frequency
+freq = {}
+for t in trag_list:
+	for let in t:
+		if let not in freq.keys():
+			freq[let] = 1
+		else:
+			freq[let] += 1
+
+# print freq
+
+
+
+####
 # Reading Data From File
 ####
 
@@ -18,7 +136,6 @@ file = open('s3_data.txt', 'r')
 file.close()
 
 ## ALWAYS USE EITHER with 
-
 with open('s3_data.txt', 'r') as file:
 	# Do something with file
 	pass
@@ -48,118 +165,6 @@ with open('s3_data.txt', 'r') as file:
 	#		print line
 
 
-####
-# Using other modules (the import statement)
-####
-
-## The random Module
-## This module is imported from the standard library 
-## (it's available with every installation of python 2.7.x )
-import random
-
-## Random float from uniform distribution [0.0, 1.0)
-# print random.random()
-
-## Random integer in range
-# print random.randrange(5, 11)
-
-## Random choice from list
-# print random.choice(['jc paper 1', 'jc paper 2', 'jc paper 3'])
-
-## Make a random, weighted decision
-# E.g. Do something in 33% of cases
-if random.random() < 0.33:
-	amount = random.randrange(50, 100)
-	# print 'You won {}$!'.format(amount)
-
-
-## A full example: Creating some fake worm data
-## (to test your nice statistics routine)
-
-directions = list('NESW')
-
-def create_random_worm_data():
-	'''
-	Example C. elegans Datapoint
-
-	index: an integer identifying a specific worm
-	position: a list containing the x and y coordinates
-	orientation: a string of either N, E, S or W
-	'''
-
-	# You are observing 10 worms
-	index = random.randrange(10)
-
-	# The coordinate system is 10 x 10
-	position = [random.randrange(1, 11) for i in range(2)]
-
-	orientation = random.choice(directions)
-
-	return index, position, orientation
-
-# print create_random_worm_data()
-
-# Create data set
-data_set = [create_random_worm_data() for i in range(50)]
-# print data_set
-
-
-## Example data processing: Average worm position
-positions = [data[1] for data in data_set]
-x, y = [], []
-
-for dx, dy in positions:
-	x.append(dx)
-	y.append(dy)
-
-num_pos = len(x)
-avg_pos = [sum(x)/num_pos, sum(y)/num_pos]
-# print avg_pos
-
-
-
-####
-# The csv module (also standard library)
-####
-
-import csv
-
-#with open('worm_data.csv', 'w') as file:
-	
-	## Create the writer (this is a simple interface for writing csv files)	
-#	writer = csv.writer(file)
-
-	## Write the header (not necessary but most csv have the column names in the first row)
-#	writer.writerow( ('Index', 'Pos X', 'Pos Y', 'Orientation') )
-
-	## Write the rest of the data
-#	for i, pos, ori in data_set:
-#		writer.writerow( (i, pos[0], pos[1], ori) )
-
-# print open('worm_data.csv', 'rt').read()
-
-
-####
-# The math module
-####
-
-import math
-
-## Constants
-# print math.pi, math.e
-
-## Trigonometry
-#math.radians(), math.degrees()
-#math.sin(), math.asin()
-#math.cos(), math.acos()
-
-#math.ceil()
-#math.floor()
-
-#math.sqrt()
-#math.log()
-#math.factorial()
-
 
 ####
 # Prompting the user
@@ -173,3 +178,15 @@ import math
 # user_input = raw_input('What is the weather like? (1-10)\n')
 # print int(user_input)
 
+
+
+####
+# Object-oriented programming 
+####
+
+
+
+
+####
+# Everything is an object
+####
