@@ -22,7 +22,16 @@
 
 
 ####
-# PROBLEM 2_C (need a challenge?)
+# PROBLEM 2_C
+####
+
+# Define a function overlapping() that takes two lists and returns True if 
+# they have at least one member in common, False otherwise.
+
+
+
+####
+# PROBLEM 2_D (need a challenge?)
 ####
 
 # Write a program that outputs 15 rows of pascals triangle.
