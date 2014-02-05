@@ -7,7 +7,7 @@
 
 
 ####
-# Reading Data From
+# Reading Data From File
 ####
 
 file = open('s3_data.txt', 'r')
@@ -140,6 +140,28 @@ import csv
 
 
 ####
+# The math module
+####
+
+import math
+
+## Constants
+# print math.pi, math.e
+
+## Trigonometry
+#math.radians(), math.degrees()
+#math.sin(), math.asin()
+#math.cos(), math.acos()
+
+#math.ceil()
+#math.floor()
+
+#math.sqrt()
+#math.log()
+#math.factorial()
+
+
+####
 # Prompting the user
 ####
 
@@ -150,3 +172,4 @@ import csv
 ## Take care when prompting other than string
 # user_input = raw_input('What is the weather like? (1-10)\n')
 # print int(user_input)
+
