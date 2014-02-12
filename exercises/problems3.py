@@ -4,15 +4,15 @@
 
 # We are working towards controlling devices via serial commands.
 # This is done by sending commands as strings.
-# Imagine a programm controlling a and a two-way valve
+# Imagine a programm controlling a pump and a two-way valve
 
 # The pump has the following commands:
 #	pump, stop
 # The valve has the following commands:
 #	chip, waste
 
-# Both devices have unique adresses (pump: 0, valve: 1) and a command is bult up as follows:
-# command = '/adress/command\c\r' Notice the \c\r in the end of the command.
+# Both devices have unique adresses (pump: 0, valve: 1) and a command is built up as follows:
+# command = '/adress/command\c\r' Notice the \c\r has to be at the end of every command.
 # E.g. Stop pump: '/0/stop\c\r'
 
 
@@ -33,7 +33,6 @@
 # if the value is present otherwise return False.
 # (this function is exctly what dictionary.get(key) does,
 # so it is not allowed here.
-
 
 
 ####
