@@ -6,6 +6,128 @@
 #-------------------------------------------------
 
 
+####
+# Reading Data From File
+####
+
+file = open('s3_data.txt', 'r')
+
+## This is the tricky part, a file always needs to be closed
+## This is a problem, when an error happens (the program exits)
+## before closing properly.
+file.close()
+
+## ALWAYS USE EITHER with 
+with open('s3_data.txt', 'r') as file:
+	# Do something with file
+	pass
+
+
+##OR try: finally: with files to make sure they close
+file = open('s3_data.txt', 'r')
+try:
+	#do something with file
+	pass
+
+# File gets closed even if an error happens in do something
+finally:
+	file.close()
+
+
+
+with open('s3_data.txt', 'r') as file:
+	pass
+	## Reading Complete file
+	#complete_file = file.read()
+	#print len(complete_file)
+
+	## Reading Line by line
+	#for line in file:
+	#	if len(line) > 6:
+	#		print line
+
+
+
+####
+# Prompting the user
+####
+
+
+# user_input = raw_input('What is the weather like?\n')
+# print user_input, type(user_input)
+
+## Take care when prompting other than string
+# user_input = raw_input('What is the weather like? (1-10)\n')
+# print int(user_input)
+
+
+
+####
+# Object-oriented programming (superficial)
+####
+
+## Imagine a blueprint for a car (called a class in python)
+## Each car has a color, a current speed and a maximal speed
+
+class Car:
+	def __init__(self, color, max_speed):
+		self.color = color
+		self.max_speed = max_speed
+
+
+## We can create a new car (instance of the class Car)
+## The input arguments are the arguments passed, self is mandatory (ignore it)
+audi = Car('silver', 150)
+ferrari = Car('red', 250)
+
+
+## We can access its elements
+# print audi.color ## refers to self.color of the audi instance
+# print ferrari.color, ferrari.max_speed
+# print ferrari
+
+
+## You can add functions that are generic for each car 
+## but use the specific car parameters (e.g. accelerate)
+## A function in a class is called a METHOD of this class
+
+class BetterCar:
+	def __init__(self, color, max_speed):
+		self.color = color
+		self.max_speed = max_speed
+
+		# Current speed is always 0.0 in the beginning
+		self.current_speed = 0.0
+
+	def	accelerate(self, amount):
+		self.current_speed += amount
+
+		if self.current_speed > self.max_speed:
+			self.current_speed = self.max_speed
+
+	def paint(self, new_color):
+		self.color = new_color
+
+
+## An example
+audi = BetterCar('black', 200)
+ferrari = BetterCar('red', 300)
+
+# print audi.current_speed
+audi.accelerate(50)
+audi.accelerate(-20)
+# print audi.current_speed
+
+audi.paint('silver')
+# print audi.color
+
+audi.color = 'black'
+# print audi.color
+
+## All of this has absolutely no effects on the ferrari
+# print ferrari.current_speed, ferrari.color
+
+
 
 ####
 # Using other modules (the import statement)
