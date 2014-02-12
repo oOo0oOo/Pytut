@@ -39,7 +39,10 @@
 # PROBLEM 3_C
 ####
 
-# Count the number of times each word comes up in this text (use dictionary, ignore upper case).
+# Count the number of times each word comes up in this text (use dictionary).
+# Before counting clean up the text as follows:
+# All lowercase; remove periods and commas (e.g. new = old.replace('.', '') )
+
 # Make a list with all the words that come up more than 6 times...
 
 text = '''
@@ -62,11 +65,11 @@ Morbi mi odio, accumsan nec turpis quis, malesuada placerat eros. Cras a accumsa
 
 # 3. How do you take all except the last element of a list?
 
-# 4. Create a list containing all numbers below 10 and add another element to it
+# 4. Create a list containing all numbers below 10 and add two strings ('abc' and 'cba').
 
 # 5. How can you permanently remove the second element in the list from 4.
 
-# 6. Loop over each element in your list and show it to the user if it is a integer.
+# 6. Loop over each element in your list and show it to the user if it is a string.
 
 # 7. Make a function that takes one input value and returns 3 multiplied with the input value.
 
@@ -74,6 +77,6 @@ Morbi mi odio, accumsan nec turpis quis, malesuada placerat eros. Cras a accumsa
 
 # 9. How do you convert a string into all lowercase / all uppercase letters.
 
-# 10. How do you find the index where 'aj' first comes up in 'poaiu h.dfbc4nv1t;ml.sdfhg125sd5io pajklsdf79hpoiun b'.
+# 10. How do you find the index where 'aj' first comes up in 'poaiunv1t;ml.s25sd5io paj9hpoiun b'.
 
-# 11. Write a list comprehension that doubles every element in [1, 2, 3, 4, 5, 6].
+# 11. Write a list comprehension that doubles every element in the list [1, 2, 3, 4, 5, 6].
