@@ -7,67 +7,11 @@
 
 
 ####
-# Reading Data From File
-####
-
-file = open('s3_data.txt', 'r')
-
-## This is the tricky part, a file always needs to be closed
-## This is a problem, when an error happens (the program exits)
-## before closing properly.
-file.close()
-
-## ALWAYS USE EITHER with 
-with open('s3_data.txt', 'r') as file:
-	# Do something with file
-	pass
-
-
-##OR try: finally: with files to make sure they close
-file = open('s3_data.txt', 'r')
-try:
-	#do something with file
-	pass
-
-# File gets closed even if an error happens in do something
-finally:
-	file.close()
-
-
-
-with open('s3_data.txt', 'r') as file:
-	pass
-	## Reading Complete file
-	#complete_file = file.read()
-	#print len(complete_file)
-
-	## Reading Line by line
-	#for line in file:
-	#	if len(line) > 6:
-	#		print line
-
-
-
-####
-# Prompting the user
-####
-
-
-# user_input = raw_input('What is the weather like?\n')
-# print user_input, type(user_input)
-
-## Take care when prompting other than string
-# user_input = raw_input('What is the weather like? (1-10)\n')
-# print int(user_input)
-
-
-
-####
-# Object-oriented programming (superficial)
+# Object-oriented programming (very superficial)
 ####
 
 ## Imagine a blueprint for a car (called a class in python)
-## Each car has a color, a current speed and a maximal speed
+## Each car has a color and a maximal speed
 
 class Car:
 	def __init__(self, color, max_speed):
@@ -111,7 +55,7 @@ class BetterCar:
 
 ## An example
 audi = BetterCar('black', 200)
-ferrari = BetterCar('red', 300)
+ferrari = BetterCar('white', 300)
 
 # print audi.current_speed
 audi.accelerate(50)
@@ -126,6 +70,46 @@ audi.color = 'black'
 
 ## All of this has absolutely no effects on the ferrari
 # print ferrari.current_speed, ferrari.color
+
+
+
+## A microfluidics example (device control)
+class Pump:
+	def __init__(self, device_id, connection = []):
+		self.device_id = device_id
+		self.connection = connection
+
+	def run_cmd(self, command):
+		'''
+			Template: /device_id/command/s
+		'''
+		cmd = '/{}/{}/s'.format(self.device_id, command)
+		
+		# Send over connection (append to connection list)
+		self.connection.append(cmd)
+
+	def pump(self):
+		self.run_cmd('pump')
+
+	def stop(self):
+		self.run_cmd('stop')
+
+
+# The serial connection is SIMULATED as a list
+# list.append() means the command is sent to the devices
+
+connection = []
+
+pump0 = Pump(0, connection)
+pump1 = Pump(1, connection)
+
+pump1.pump()
+pump0.pump()
+pump1.stop()
+pump0.stop()
+pump1.pump()
+
+# print connection
 
 
 
@@ -172,7 +156,7 @@ def create_random_worm_data():
 	index = random.randrange(10)
 
 	# The coordinate system is 10 x 10
-	position = [random.randrange(1, 11) for i in range(2)]
+	position = [random.randrange(1, 11), random.randrange(1, 11)]
 
 	orientation = random.choice(directions)
 
@@ -193,10 +177,68 @@ for dx, dy in positions:
 	x.append(dx)
 	y.append(dy)
 
-num_pos = len(x)
+num_pos = float(len(x))
 avg_pos = [sum(x)/num_pos, sum(y)/num_pos]
-# print avg_pos
+print avg_pos
 
+
+
+
+
+####
+# Prompting the user
+####
+
+
+# user_input = raw_input('What is the weather like?\n')
+# print user_input, type(user_input)
+
+## Take care when prompting other than string
+# user_input = raw_input('What is the weather like? (1-10)\n')
+# print int(user_input)
+
+
+
+
+####
+# Reading Data From File
+####
+
+file = open('s3_data.txt', 'r')
+
+## This is the tricky part, a file always needs to be closed
+## This is a problem, when an error happens (the program exits)
+## before closing properly.
+file.close()
+
+## ALWAYS USE EITHER with 
+with open('s3_data.txt', 'r') as file:
+	# Do something with file
+	pass
+
+
+##OR try: finally: with files to make sure they close
+file = open('s3_data.txt', 'r')
+try:
+	#do something with file
+	pass
+
+# File gets closed even if an error happens in do something
+finally:
+	file.close()
+
+
+
+with open('s3_data.txt', 'r') as file:
+	pass
+	## Reading Complete file
+	#complete_file = file.read()
+	#print len(complete_file)
+
+	## Reading Line by line
+	#for line in file:
+	#	if len(line) > 6:
+	#		print line
 
 
 ####
@@ -204,7 +246,6 @@ avg_pos = [sum(x)/num_pos, sum(y)/num_pos]
 ####
 
 import csv
-
 #with open('worm_data.csv', 'w') as file:
 	
 	## Create the writer (this is a simple interface for writing csv files)	
@@ -218,6 +259,7 @@ import csv
 #		writer.writerow( (i, pos[0], pos[1], ori) )
 
 # print open('worm_data.csv', 'rt').read()
+
 
 
 ####
