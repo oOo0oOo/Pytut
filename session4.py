@@ -6,6 +6,31 @@
 #-------------------------------------------------
 
 
+## It's not too late:
+## STUDY PAST SESSIONS UNTIL YOU HAVE NO PROBLEMS SOLVING 3_D
+
+# Feel free to contact me if you get stuck!
+# Always remember: Google is your best friend...
+
+# The next lesson is going to be the last general lesson.
+# We have barely scratched the surface of Python but
+# from now on we are going to look at specific applications of Python
+# more or less in order of popularity in poll (image processing can be tricky):
+
+# Plotting data																	7
+# Interfacing with external devices (USB/Serial) 								8
+# Image Processing																everyone
+# Parallel code execution, parallel device control								7
+# Advanced data handling: fft, interpolation, integration, clustering, ...		5
+
+# I would recommend to come but the sessions are going to be independent.
+
+
+
+##  FIND A PROJECT TO APPLY WHAT YOU HAVE LEARNED
+
+
+
 ####
 # Object-oriented programming (very superficial)
 ####
@@ -20,7 +45,9 @@ class Car:
 
 
 ## We can create a new car (instance of the class Car)
-## The input arguments are the arguments passed, self is mandatory (ignore it)
+## The input arguments are the arguments passed when initiating the instance
+## self is mandatory (ignore it)
+
 audi = Car('silver', 150)
 ferrari = Car('red', 250)
 
@@ -74,6 +101,12 @@ audi.color = 'black'
 
 
 ## A microfluidics example (device control)
+# Interface with several pumps in Python
+
+# The serial connection is SIMULATED as a list
+connection = []
+# connection.append() means the command is sent to all devices
+
 class Pump:
 	def __init__(self, device_id, connection = []):
 		self.device_id = device_id
@@ -95,21 +128,25 @@ class Pump:
 		self.run_cmd('stop')
 
 
-# The serial connection is SIMULATED as a list
-# list.append() means the command is sent to the devices
-
-connection = []
-
 pump0 = Pump(0, connection)
+pump0.run_cmd('pump')
+
+# print connection
+
 pump1 = Pump(1, connection)
 
 pump1.pump()
-pump0.pump()
 pump1.stop()
 pump0.stop()
-pump1.pump()
 
 # print connection
+
+for i in range(10):
+	pump1.pump()
+	pump1.stop()
+
+# print connection
+
 
 
 
@@ -129,7 +166,8 @@ import random
 # print random.randrange(5, 11)
 
 ## Random choice from list
-# print random.choice(['jc paper 1', 'jc paper 2', 'jc paper 3'])
+papers = ['jc paper 1', 'jc paper 2', 'jc paper 3']
+# print random.choice(papers)
 
 ## Make a random, weighted decision
 # E.g. Do something in 33% of cases
@@ -179,8 +217,29 @@ for dx, dy in positions:
 
 num_pos = float(len(x))
 avg_pos = [sum(x)/num_pos, sum(y)/num_pos]
-print avg_pos
+# print avg_pos
 
+
+
+
+####
+# The csv module (also standard library)
+####
+
+import csv
+#with open('worm_data.csv', 'w') as file:
+	
+	## Create the writer (this is a simple interface for writing csv files)	
+#	writer = csv.writer(file)
+
+	## Write the header (not necessary but most csv have the column names in the first row)
+#	writer.writerow( ('Index', 'Pos X', 'Pos Y', 'Orientation') )
+
+	## Write the rest of the data
+#	for i, pos, ori in data_set:
+#		writer.writerow( (i, pos[0], pos[1], ori) )
+
+# print open('worm_data.csv', 'rt').read()
 
 
 
@@ -239,26 +298,6 @@ with open('s3_data.txt', 'r') as file:
 	#for line in file:
 	#	if len(line) > 6:
 	#		print line
-
-
-####
-# The csv module (also standard library)
-####
-
-import csv
-#with open('worm_data.csv', 'w') as file:
-	
-	## Create the writer (this is a simple interface for writing csv files)	
-#	writer = csv.writer(file)
-
-	## Write the header (not necessary but most csv have the column names in the first row)
-#	writer.writerow( ('Index', 'Pos X', 'Pos Y', 'Orientation') )
-
-	## Write the rest of the data
-#	for i, pos, ori in data_set:
-#		writer.writerow( (i, pos[0], pos[1], ori) )
-
-# print open('worm_data.csv', 'rt').read()
 
 
 
