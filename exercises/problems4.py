@@ -9,7 +9,7 @@
 # Use a list to simulate the connection as shown in the example.
 
 # The pump recognizes commands built as follows:
-# /adress/command/end (e.g. device A, command PUMP: '/A/INJECT/end' )
+# /adress/command/end (e.g. device A, command INJECT: '/A/INJECT/end' )
 
 # Each pump supports the following commands:
 # CALIBRATE, INJECT, WITHDRAW, STOP		control syringe movements
@@ -44,7 +44,7 @@
 # 4_C
 ####
 
-# Add a method valve to your pump that takes one boolean as an argument
+# Add a method valve(status) to your pump that takes one boolean as an argument
 # Switch the valve according to the boolean
 # e.g.  pump.valve(True) 	--> send VIN command
 #		pump.valve(False) 	--> send VOUT command
@@ -52,3 +52,21 @@
 # Now add method pump to your pump that does the same for inject, withdraw
 # e.g. 	pump.pump(True)		--> send INJECT command
 #		pump.pump(False)	--> send WITHDRAW command
+
+
+
+####
+# 4_D: Automated chip testing
+####
+
+# Your are testing a PDMS chip with pressure-based valves.
+# The chip has 5 valves, each identified by a number between 0 and 4.
+# The testing procedure is as follows:
+# Repeat 50 times:
+# 	  - Select 2 random valves out of the 5 available
+#	  - Print valve numbers (pretend you would actually switch valves)
+#	  - Wait half a second, use:
+#		import time
+#		time.sleep(0.5)
+
+# If the chip is still ok after this stress test it is ready for use...
