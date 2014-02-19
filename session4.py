@@ -85,10 +85,12 @@ audi = BetterCar('black', 200)
 ferrari = BetterCar('white', 300)
 
 # print audi.current_speed
+
 audi.accelerate(50)
 audi.accelerate(-20)
 # print audi.current_speed
 
+# print audi.color
 audi.paint('silver')
 # print audi.color
 
@@ -121,28 +123,28 @@ class Pump:
 		# Send over connection (append to connection list)
 		self.connection.append(cmd)
 
-	def pump(self):
-		self.run_cmd('pump')
+	def start(self):
+		self.run_cmd('start')
 
 	def stop(self):
 		self.run_cmd('stop')
 
 
 pump0 = Pump(0, connection)
-pump0.run_cmd('pump')
+pump0.run_cmd('start')
 
 # print connection
 
 pump1 = Pump(1, connection)
 
-pump1.pump()
+pump1.start()
 pump1.stop()
 pump0.stop()
 
 # print connection
 
 for i in range(10):
-	pump1.pump()
+	pump1.start()
 	pump1.stop()
 
 # print connection
@@ -172,7 +174,7 @@ papers = ['jc paper 1', 'jc paper 2', 'jc paper 3']
 ## Make a random, weighted decision
 # E.g. Do something in 33% of cases
 if random.random() < 0.33:
-	amount = random.randrange(50, 100)
+	amount = random.randrange(50, 101)
 	# print 'You won {}$!'.format(amount)
 
 
@@ -194,7 +196,7 @@ def create_random_worm_data():
 	index = random.randrange(10)
 
 	# The coordinate system is 10 x 10
-	position = [random.randrange(1, 11), random.randrange(1, 11)]
+	position = [ random.randrange(1, 11), random.randrange(1, 11) ]
 
 	orientation = random.choice(directions)
 
@@ -203,12 +205,13 @@ def create_random_worm_data():
 # print create_random_worm_data()
 
 # Create data set
-data_set = [create_random_worm_data() for i in range(50)]
+data_set = [ create_random_worm_data() for i in range(1000000) ]
 # print data_set
 
 
 ## Example data processing: Average worm position
 positions = [data[1] for data in data_set]
+
 x, y = [], []
 
 for dx, dy in positions:
@@ -217,7 +220,7 @@ for dx, dy in positions:
 
 num_pos = float(len(x))
 avg_pos = [sum(x)/num_pos, sum(y)/num_pos]
-# print avg_pos
+print avg_pos
 
 
 
@@ -227,17 +230,17 @@ avg_pos = [sum(x)/num_pos, sum(y)/num_pos]
 ####
 
 import csv
-#with open('worm_data.csv', 'w') as file:
+with open('worm_data.csv', 'w') as file:
 	
 	## Create the writer (this is a simple interface for writing csv files)	
-#	writer = csv.writer(file)
+	writer = csv.writer(file)
 
 	## Write the header (not necessary but most csv have the column names in the first row)
-#	writer.writerow( ('Index', 'Pos X', 'Pos Y', 'Orientation') )
+	writer.writerow( ('Index', 'Pos X', 'Pos Y', 'Orientation') )
 
 	## Write the rest of the data
-#	for i, pos, ori in data_set:
-#		writer.writerow( (i, pos[0], pos[1], ori) )
+	for index, pos, ori in data_set:
+		writer.writerow( (index, pos[0], pos[1], ori) )
 
 # print open('worm_data.csv', 'rt').read()
 
