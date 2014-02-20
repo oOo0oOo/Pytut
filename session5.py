@@ -6,6 +6,7 @@
 #-------------------------------------------------
 
 
+
 ####
 # Basic matrix operations (as compared to MATLAB)
 ####
@@ -38,6 +39,7 @@ c = np.empty(size)
 ## Indexing
 ## First Row: c = a(1, :)
 c = a[0, :]
+# print all(c)
 
 ## Second Column: c = a(:, 2)
 c = a[:, 1]
@@ -47,6 +49,12 @@ c = a[::2, :]
 
 ## Size: c = size(a)
 c = a.shape
+
+
+## Relevant blog post: "Moving from MATLAB matrices to NumPy arrays - A Matrix Cheatsheet"
+# http://sebastianraschka.com/Articles/2014_matlab_vs_numpy.html
+
+
 
 
 ####
@@ -79,6 +87,8 @@ y = a[:, 1]
 # print np.fft.fft(a)
 
 
+
+
 ####
 # Data Plotting
 ####
@@ -105,11 +115,11 @@ dy = [10, 13, 8, 11]
 
 ## Histogram
 num_bins = 10
-plt.hist(x, num_bins)
+# plt.hist(x, num_bins)
 #plt.show()
 
 ## Save a figure: work with .jpg, .png, .svg, .eps, .pdf
-plt.savefig('output.png')
+# plt.savefig('output.png')
 
 
 ####
@@ -118,3 +128,63 @@ plt.savefig('output.png')
 
 ## Go to:
 ## http://matplotlib.org/gallery.html
+
+
+
+
+####
+# Tic Tac Toe
+####
+
+## A game of tic tac toe (4 in a row = winner)
+## for two players (1 and 2)
+
+# The playing board (4 by 4)
+board = np.zeros( (4, 4) )
+# print board
+
+
+def check_winner(board, player):
+	'''
+		A function that checks if a player has won given a board.
+		Returns True if player has 4 in a row and False otherwise.
+
+		board: a np.array of shape (4, 4) where 
+				0 means neutral position
+				1 means occupied by player 1
+				2 means occupied by player 2
+		player: an int, either 1 or 2 (or 0)
+	'''
+	# Check each row and column
+	for i in range(4):
+		# Row
+		if all(board[i, :] == player):
+			return True
+
+		# Column
+		elif all(board[:, i] == player):
+			return True
+
+	# Check diagonal
+	if all(board.diagonal() == player):
+		return True
+
+	# Anti-diagonal (annoying, didn't find easy numpy way...)
+	# Construct the indices of the anti-diagonal
+	ind = [(i, 3-i) for i in range(4)]
+	# print ind
+	if all([board[x, y] == player for x, y in ind]):
+		return True
+
+	return False
+
+
+# An example game
+board = [
+	[1, 1, 0, 1],
+	[0, 1, 1, 0],
+	[0, 1, 1, 0],
+	[0, 0, 0, 0]
+]
+
+# print check_winner(np.array(board), 1)
