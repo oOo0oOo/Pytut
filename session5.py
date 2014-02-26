@@ -131,6 +131,35 @@ num_bins = 10
 
 
 
+####
+# Justinas Data Analysis
+####
+
+# Create some random data
+import random
+
+x = []
+y = []
+
+for i in range(100):
+	x_i = random.random() * 100
+	x.append(x_i)
+	y.append(10 + random.gauss(10, 3) * x_i * 0.1)
+
+# plt.scatter(x, y)
+# plt.show()
+
+# Correct for drift (non-straight image)
+y_corrected = []
+for i in range(len(x)):
+	# Correct for linear slope (reverse action during data creation)
+	y_corrected.append((y[i] - 10) / (x[i] * 0.1) )
+
+# plt.scatter(x, y_corrected)
+# plt.hist(y_corrected, 50)
+# plt.show()
+
+
 
 ####
 # Tic Tac Toe
