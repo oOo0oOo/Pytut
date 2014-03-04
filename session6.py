@@ -6,6 +6,15 @@
 #-------------------------------------------------
 
 
+
+####
+# To manage the serial connection you need the pyserial module
+# Windows; download installer from: https://pypi.python.org/pypi/pyserial
+# Mac (with pip installed): "sudo pip install pyserial" in terminal
+# 		If you dont have pip do "sudo easy_install pip" first
+####
+
+
 ####
 # Solenoid Valve Control
 ####
@@ -100,6 +109,12 @@ class MilliGAT:
 	'''
 	This is a very simple controller class for a milliGAT low flow pump.
 	It enables pumping at constant speed and stopping flow (pumping at speed 0).
+	
+	A list of all commands is available from (page 42):
+	http://www.globalfia.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=48
+
+	This example only implements the slew command and is able to read a response from the device.
+
     '''
 
 	def __init__(self, serial_connection, adress):
