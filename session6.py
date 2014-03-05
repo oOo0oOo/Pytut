@@ -122,7 +122,7 @@ class MilliGAT:
 		serial connection: is the serial connection used to transmit the commands
 		adress: is the specific adress of the pump (daisy chained)
 		'''
-		self.ser = ser
+		self.ser = serial_connection
 		self.adress = adress
 
 	def read_response(self):
@@ -161,15 +161,15 @@ class MilliGAT:
 
 ## A simple example:
 # Initialize connection and pump
-'''
-connection = Serial('COM5')
-pump = MilliGAT(connection, 'A')
+
+connection = Serial('COM3')
+pump = MilliGAT(connection, 'F')
 
 # Pump at 50 ul/min for 10 s
 pump.slew(50)
-time.sleep(10)
+time.sleep(5)
 pump.stop()
-'''
+
 
 # Check if we still have an open connection:
 # the close...
