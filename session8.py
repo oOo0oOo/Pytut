@@ -41,13 +41,13 @@ with open(filepath, 'rb') as file:
 # print data
 
 
-
 ## Getting all values; in short (feels a bit like a maze)
 ## USE THIS (if you think you will still get it a few months from now)...
 with open('example_s8.csv', 'rb') as file:
 	data = [ [int(r) for r in row] for row in list(csv.reader(file)) [1:] ]
 
 # print data[0], data[-1]
+
 
 
 ####
@@ -73,13 +73,14 @@ rows = np.where(data[:,2] > 512)
 # Now we can select only these rows from the matrix
 front_cells = data[rows, :]
 # print front_cells
-# print front_cells[:, 2].mean(), '+-', front_cells[:, 2].std()
+# print front_cells[:, 2].mean(), 'Variance:', front_cells[:, 2].var()
 
 # A linear fit through the cell positions, 
 # to check how they are focussed along the channel
 params = np.polyfit(data[:,2], data[:,3], 1, full = True)
 coeff, r_val = params[0], params[1]
 # print 'Intercept: {}, Slope: {}, R-squared: {}'.format(coeff[1], coeff[0], r_val[0])
+
 
 
 ####
@@ -109,14 +110,26 @@ y_sorted = sorted_data[:,3]
 
 # Moving Average (window size) 
 # (googled: http://stackoverflow.com/questions/13728392/moving-average-or-running-mean)
-def moving_mean(values, N):
+def moving_avg(values, N):
 	return np.convolve(values, np.ones((N,))/N)[(N-1):-N+1]
 
 # We will use a new figure to display the results
-plt.figure()
+# plt.figure()
 x = range(len(y_sorted))
-# plt.plot(moving_mean(x_sorted, 10), moving_mean(y_sorted, 10), 'r')
-# plt.plot(moving_mean(x_sorted, 50), moving_mean(y_sorted, 50), color = 'green')
-# plt.plot(moving_mean(x_sorted, 150), moving_mean(y_sorted, 150), color = 'orange')
+# plt.plot(moving_avg(x_sorted, 10), moving_avg(y_sorted, 10), 'r')
+# plt.plot(moving_avg(x_sorted, 50), moving_avg(y_sorted, 50), color = 'green')
+# plt.plot(moving_avg(x_sorted, 150), moving_avg(y_sorted, 150), color = 'orange')
 
-# plt.show()
+# Add a title and a legend
+# plt.title('Running Average Window Sizes')
+# plt.legend(['10', '50', '150'])
+
+
+## Now a moving average for the area
+# plt.figure()
+x_avg = moving_avg(sorted_data[:, 2], 10)
+area_avg = moving_avg(sorted_data[:,1], 10)
+# plt.plot(x_avg, area_avg)
+
+
+plt.show()
