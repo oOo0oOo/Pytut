@@ -129,8 +129,8 @@ ax.set_title('Percentage of perfect co-encapsulations')
 
 
 
-## Normal distribution
-from scipy.stats import norm
+## Fitting a distribution
+from scipy.stats import norm, expon, uniform
 
 # Here is some normal distributed data data
 data = norm.rvs(10.0, 2.5, size=500)
@@ -138,11 +138,10 @@ data = norm.rvs(10.0, 2.5, size=500)
 
 # Fit a normal distribution to the data
 mu, std = norm.fit(data)
-# print mu, std
 
+# print mu, std, data.mean(), data.std()
 
 ## Plot the histogram and fit
-
 # fig, ax = plt.subplots()
 # ax.hist(data, bins=25, normed=True, alpha=0.6, color='g')
 
