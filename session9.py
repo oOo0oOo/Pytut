@@ -153,4 +153,16 @@ p = norm.pdf(x, mu, std)
 # ax.plot(x, p, 'k', linewidth=2)
 
 
+
+## A simple T-test (for two independent samples)
+# (e.g. Girls and boys taking the same test)
+
+from scipy.stats import ttest_ind
+
+t_statistic, p_value = stats.ttest_ind(norm.rvs(10.0, 1.0, size=200), norm.rvs(10.0, 1.0, size=200))
+
+# Null hypothesis: two samples have the same mean (rejected if small p-value)
+# print "p-value =", p_value
+
+
 plt.show()
