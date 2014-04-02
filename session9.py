@@ -155,14 +155,17 @@ p = norm.pdf(x, mu, std)
 
 
 ## A simple T-test (for two independent samples)
-# (e.g. Girls and boys taking the same test)
+# (e.g. girls and boys taking the same test)
 
 from scipy.stats import ttest_ind
 
-t_statistic, p_value = stats.ttest_ind(norm.rvs(10.0, 1.0, size=200), norm.rvs(10.0, 1.0, size=200))
+sample1 = norm.rvs(10.0, 1.0, size=200)
+sample2 = norm.rvs(10.0, 1.0, size=200)
+
+t_statistic, p_value = stats.ttest_ind(sample1, sample2)
 
 # Null hypothesis: two samples have the same mean (rejected if small p-value)
-# print "p-value =", p_value
+print "p-value =", p_value
 
 
 plt.show()
