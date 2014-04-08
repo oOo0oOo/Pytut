@@ -1,7 +1,9 @@
 #-------------------------------------------------
 #
-# Python Tutorial Session 9
+# Python Tutorial Session 10
 # (c) Oliver Dressler, 2014
+#
+# Quantifying cell ordering
 #
 #-------------------------------------------------
 
@@ -9,9 +11,9 @@ from SimpleCV import VirtualCamera
 from matplotlib import pyplot as plt
 import time
 
-PATH = '60ul_processed_simple.avi'
+PATH = '60ul_center.avi'
 
-# We will load the imageset using the VirtualCamera from simplecv
+# We will load the video using the VirtualCamera from simplecv
 video = VirtualCamera(PATH, 'video')
 # video.getImage().show() ; time.sleep(10)
 
@@ -35,9 +37,9 @@ video = VirtualCamera(PATH, 'video')
 area, position = [], []
 
 before = time.time()
-for i in range(10):
+for i in range(1000):
 	# get image
-	img = video.getImage() #; img.show(); time.sleep(1)
+	img = video.getImage()# ; img.show(); time.sleep(1)
 	
 	# subtract background (throws an error if no frames are left)
 	try:
@@ -46,16 +48,16 @@ for i in range(10):
 		break
 
 	# use the oldschool threshold
-	img = img.threshold(5) #; img.show(); time.sleep(1)
+	img = img.threshold(5)#; img.show(); time.sleep(1)
 
 	# Extract blobs (cells)
 	blobs = img.findBlobs(minsize = 100)
 
 	if blobs:
-		# blobs.show(); time.sleep(1)
+		# blobs.show(); time.sleep(3)
 		for b in blobs:
-			area.append(b.area())
-			position.append(b.centroid())
+			area.append( b.area() )
+			position.append( b.centroid() )
 
 
 # Analyze the processing time
@@ -86,6 +88,7 @@ axes[1].set_title('X Histogram')
 
 axes[2].hist(y, bins = 50)
 axes[2].set_title('Y Histogram')
+
 
 
 # Does cell size affect y position
@@ -119,7 +122,7 @@ for y_i in y:
 
 
 ## Analyze (IV): Statistics
-from scipy.stats import norm, ttest_ind, ks_2samp
+from scipy.stats import ttest_ind, ks_2samp
 
 # Fit the normal distributions
 bottom = [y_i for y_i in y if y_i < middle]
@@ -130,7 +133,7 @@ _, p_ind = ttest_ind(top, bottom)
 
 # Check each mean if value is acceptable
 _, p_same_dist = ks_2samp(top, bottom)
-# print 'P-val for Kolmogorov Smirnov (values from same continuous distribution):', p_same_dist
+# print 'P-val for Kolmogorov-Smirnov (values from same continuous distribution):', p_same_dist
 
 
 # plt.show()
