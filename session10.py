@@ -13,14 +13,18 @@ PATH = '60ul_processed_simple.avi'
 
 # We will load the imageset using the VirtualCamera from simplecv
 video = VirtualCamera(PATH, 'video')
+# video.getImage().show() ; time.sleep(10)
 
 # Calculate average of first 100 frames
-num_frames = 100
-avg = video.getImage()
-for i in range(num_frames - 1):
-	avg = (avg + video.getImage())/2
+def average_image(video, num_frames = 100):
+	avg = video.getImage()
+	for i in range(num_frames - 1):
+		# Some kind of running average
+		avg = (avg + video.getImage()) / 2
+	return avg
 
-# avg.show() ; time.sleep(1)
+avg = average_image(video)
+# avg.show() ; time.sleep(10)
 
 
 # Open video again to be able to analyze full video
@@ -31,9 +35,9 @@ video = VirtualCamera(PATH, 'video')
 area, position = [], []
 
 before = time.time()
-for i in range(1000):
+for i in range(10):
 	# get image
-	img = video.getImage()
+	img = video.getImage() #; img.show(); time.sleep(1)
 	
 	# subtract background (throws an error if no frames are left)
 	try:
@@ -42,23 +46,22 @@ for i in range(1000):
 		break
 
 	# use the oldschool threshold
-	img = img.threshold(5)
-
-	# show the result to test
-	# img.show(); time.sleep(0.5)
+	img = img.threshold(5) #; img.show(); time.sleep(1)
 
 	# Extract blobs (cells)
 	blobs = img.findBlobs(minsize = 100)
 
 	if blobs:
-		# blobs.show(); time.sleep(0.5)
+		# blobs.show(); time.sleep(1)
 		for b in blobs:
 			area.append(b.area())
 			position.append(b.centroid())
 
+
 # Analyze the processing time
 t = float(time.time() - before)
 # print 'Processed {} frames @ {} frames/s, found {} cells.'.format(i, round(i/t,1), len(area))
+
 
 
 ## Plotting
@@ -92,7 +95,7 @@ ax.set_ylabel('Y Position')
 ax.set_xlabel('Cell Size')
 ax.set_title('Cell Size vs. Y Position')
 
-# plt.show()
+
 
 
 ## Analyze (II): Is up and down equally distributed
@@ -127,4 +130,7 @@ _, p_ind = ttest_ind(top, bottom)
 
 # Check each mean if value is acceptable
 _, p_same_dist = ks_2samp(top, bottom)
-# print 'P-val for Kolmogorov Smirnov (values from continuous distribution):', p_same_dist
+# print 'P-val for Kolmogorov Smirnov (values from same continuous distribution):', p_same_dist
+
+
+# plt.show()
